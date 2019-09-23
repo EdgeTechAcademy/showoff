@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+
+    <link href="../../static/css/EdgeTech.css"
+          th:href="@{css/EdgeTech.css}" rel="stylesheet" media="screen"/>
+</head>
+
+<body>
+<div class="container">
+    <div th:fragment="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header"  th:object="${user}" >
+                    <a class="navbar-brand" > <h1>Texas Cars </h1></a>
+                    <a class="navbar-brand" href="#" th:href="@{/inv/home}">Home</a>
+                    <a class="navbar-brand" href="#" th:href="@{/inv/about}">About</a>
+                    <a class="navbar-brand" href="#" th:href="@{/inv/carList}">Sell Your Car</a>
+                    <a class="navbar-brand" href="#" th:href="@{/inv/contact}">Contact</a>
+
+                    <!-- IF CUSTOMER IS ANONYMOUS -->
+                    <div th:if="${name}">
+                        <div>Welcome, Guest</div>
+                    </div>
+                    <!-- ELSE -->
+                    <div th:unless="${name}">
+                        <div th:text=" 'Hi,' + ${name}">Hi, User</div>
+                    </div>
+
+                    <a class="navbar-brand" href="#" th:href="@{/register}">Register</a>
+                    <a class="navbar-brand" href="#" th:href="@{/login}">Login</a>
+                </div>
+            </div>
+        </nav>
+        <div class="w3-container"> </div>
+        <div class="w3-content w3-section" style="max-width:1000px">
+            <img class="mySlides w3-animate-top"    src="..\images\car1.jpg" width="200px" height="100px">
+            <img class="mySlides w3-animate-bottom" src="..\images\car2.jpg" width="200px" height="100px">
+            <img class="mySlides w3-animate-top"    src="..\images\car3.jpg" width="200px" height="100px">
+            <img class="mySlides w3-animate-bottom" src="..\images\car4.jpg" width="200px" height="100px">
+        </div>
+        <script>
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) {myIndex = 1}
+                x[myIndex-1].style.display = "block";
+                setTimeout(carousel, 2500);
+            }
+        </script>
+
+    </div>
+</div>
+</body>
+</html>

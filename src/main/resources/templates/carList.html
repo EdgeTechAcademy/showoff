@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Edge Tech Java Spring Boot Framework</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+    <div th:if="${not #lists.isEmpty(inventory)}">
+        <h3>Car Inventory List</h3>
+        <table class="table table-striped">
+            <tr>
+<!--                <th>inventory Id</th>-->
+                <th>Make</th>
+                <th>Model</th>
+                <th>Price</th>
+                <th>Year</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="car : ${inventory}">
+<!--                <td th:text="${car.id}">inventory Id</td>-->
+                <td th:text="${car.make}">Make</td>
+                <td th:text="${car.model}">Model</td>
+                <td th:text="${car.price}">Price</td>
+                <td th:text="${car.year}">Year</td>
+                <!--	These items have been added for the new functionality-->
+                <!--		to make our app a richer MVC example-->
+                <td><a th:href="${ '/inv/'        + car.id}">View</a></td>
+                <td><a th:href="${ '/inv/edit/'   + car.id}">Edit</a></td>
+                <td><a th:href="${ '/inv/delete/' + car.id}">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+    </body>
+</html>
+
