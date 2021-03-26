@@ -35,6 +35,12 @@ public class InventoryController {
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public String contact(Model model) {
         model.addAttribute("inventory", inventoryService.listAllInventorys());
+        model.addAttribute("name", "Edge Tech Academy");
+        model.addAttribute("address1", "2241 S. Watson Rd.");
+        model.addAttribute("address2", "Suite 181");
+        model.addAttribute("city", "Arlington");
+        model.addAttribute("state", "TX");
+        model.addAttribute("zip", "76060");
         return "contact";
     }
 

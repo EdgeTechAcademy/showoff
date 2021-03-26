@@ -7,14 +7,12 @@
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 </head>
 <body>
-    <div align="center" th:if="${param.error}">
-    <h3 >@ViewData["Message"]</h3>
-
+<div align="center" th:if="${param.error}"></div>
     <address>
-        Edge Tech Academy<br />
-        2241 S Watson Rd<br />
-        Suite #181<br />
-        Arlington, TX 76010<br />
+        <p th:text="${name}">ETA</p>
+        <p th:text="${address1}">ETA</p>
+        <p th:text="${address2}">ETA</p>
+<!--        <p th:text="${city}, ${state} ${zip}">ETA</p>-->
         <abbr title="Phone">P:</abbr>
         682-334-5678
     </address>
